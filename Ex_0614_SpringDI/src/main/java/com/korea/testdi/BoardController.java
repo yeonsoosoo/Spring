@@ -2,8 +2,6 @@ package com.korea.testdi;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,15 +32,17 @@ public class BoardController {
 	}
 	
 	//사용자가 요청한 url을 접수
-	//사용자가 list.do를 요청하면 해당 메서드가 실행된다.
-	//JSP의 url 매핑 형태라고 생각하면된다.
+	//사용자가 list.do를 요청하면 해당 메서드가 실행이 된다.
+	//jsp의 url매핑 형태라고 생각을하면 된다.
 	@RequestMapping("/list.do")
 	public String list(Model model) {
-		//서비스를 통해서 dao의 selectList()를 호출할 수 있다.
+		//service를 통해서 dao의 selectList()를 호출할 수 있다.
 		List list = service.selectList();
-
-		model.addAttribute("list", list);
+		
+		model.addAttribute("list",list);
 		
 		return "board_list";
 	}
+	
+	
 }

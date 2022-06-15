@@ -10,8 +10,8 @@
 <body>
 	<p>과일목록</p>
 	<ul>
-	<c:forEach var="vo" items="${list }">
-		<li>${vo }</li>
+	<c:forEach var="vo" items="${list}">
+		<li>${vo}</li>
 	</c:forEach>
 	</ul>
 </body>
