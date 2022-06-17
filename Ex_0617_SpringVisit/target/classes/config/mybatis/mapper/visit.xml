@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="v">
+	<select id="visit_list" resultType="visit"> 
+		select * from visit order by idx DESC
+	</select>
+	
+	<!-- 새 글 작성하기 -->
+	<insert id="visit_insert" parameterType="visit">
+		insert into visit values(
+			SEQ_VISIT_IDX.NEXTVAL,
+			#{name},
+			#{content},
+			#{pwd},
+			#{ip},
+			sysdate
+		)
+	</insert>
+	
+	<!-- 게시글 삭제하기 -->
+	<delete id="visit_delete" parameterType="java.util.HashMap">
+		delete from visit where idx= #{idx} and pwd=#{pwd} 
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 자바의 클래스파일을 기입할 땐 (.) , 만든 파일 경로를 작성할 땐 (/) -->
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- context-1-datasource에서 만든 bean id 참조(어떤 DB로 접근해야 하는지...) -->
+		<property name="dataSource" ref="ds"/>
+		<!-- 어떤 mapper로 접근해야하는지... -->
+		<property name="configLocation" value="classpath:config/mybatis/mybatis-config.xml"/>
+	</bean>
+	
+	<!-- mapper로 접근하는 경로를 저장한게 factory, 실제로 접근하는 것은 sqlSession -->
+	<bean id="sqlSessionBean" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="factoryBean"></constructor-arg>
+	</bean>
+</beans>
