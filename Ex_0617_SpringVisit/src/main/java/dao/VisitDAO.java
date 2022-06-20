@@ -34,4 +34,19 @@ public class VisitDAO {
 		
 		return res;
 	}
+	
+	//게시글 수정을 위한 한개 조회
+	public VisitVO selectOne(int idx) {
+		VisitVO vo = sqlSession.selectOne("v.visit_one", idx);
+		
+		return vo;
+	}
+	
+	//게시글 수정
+	public int update(VisitVO vo) {
+		int res = sqlSession.update("v.visit_update",vo);
+		
+		return res;
+				
+	}
 }

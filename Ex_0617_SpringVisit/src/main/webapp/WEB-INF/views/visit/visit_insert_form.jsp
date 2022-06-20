@@ -9,6 +9,7 @@
 	function send(f) {
 		
 		f.action="insert.do";
+		f.method="post";
 		f.submit();
 	}
 </script>
@@ -24,7 +25,7 @@
 			
 			<tr>
 				<th>내용</th>
-				<td><textarea row="5" cols="50" name="content" style="resize:none; wrap="on""></textarea></td>
+				<td><textarea row="5" cols="50" name="content" style="resize:none;" wrap="on"></textarea></td>
 			</tr>
 			
 			<tr>

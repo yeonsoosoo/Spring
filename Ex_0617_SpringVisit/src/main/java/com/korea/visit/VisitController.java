@@ -73,4 +73,25 @@ public class VisitController {
 		//return에 finRes를 쓰면 "[{'res':'%s'}]" -> view가 있는줄 암
 		return finRes;
 	}
+	
+	//글 수정페이지로 전환
+	@RequestMapping("/modify_form.do")
+	public String modify_form(Model model, int idx) {
+		VisitVO vo = visit_dao.selectOne(idx);
+		
+		model.addAttribute("vo", vo);
+		
+		return MyCommon.VIEW_PATH + "modify_form.jsp";
+	}
+	
+	//게시글 수정
+	@RequestMapping("/modify.do")
+	public String modify(VisitVO vo, HttpServletRequest request) {
+		String ip = request.getRemoteAddr();
+		vo.setIp(ip);
+		
+		int res = visit_dao.update(vo);
+		
+		return "redirect:list.do";
+	}
 }

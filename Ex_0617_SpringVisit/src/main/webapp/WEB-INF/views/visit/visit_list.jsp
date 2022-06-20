@@ -41,6 +41,21 @@
 			
 		}
 	}
+	
+	function modify(f) {
+		var ori_pwd = f.ori_pwd.value.trim(); //DB에 들어있는 원본 비밀번호
+		var pwd = f.pwd.value.trim(); //수정을 위해 입력한 비밀번호
+		
+		if(ori_pwd != pwd) {
+			alert("비밀번호 불일치");
+			return;
+		}
+		
+		//비밀번호는 위에서 판별을 이미 했기 때문에 컨트롤러에서는 idx 하나만을 파라미터로 받으면됨.
+		f.action="modify_form.do";
+		f.method="post";
+		f.submit();
+	}
 
 </script>
 </head>
@@ -58,6 +73,7 @@
 			<div>
 				<form>
 					<input type="hidden" name="idx" value="${vo.idx }">
+					<input type="hidden" name="ori_pwd" value="${vo.pwd }">
 					비밀번호<input type="password" name="pwd">
 					<input type="button" value="수정" onclick="modify(this.form);">
 					<input type="button" value="삭제" onclick="del(this.form);">
