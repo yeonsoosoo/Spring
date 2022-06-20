@@ -1,8 +1,13 @@
 package vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class VisitVO {
 	private int idx;
-	private String name,content,pwd,ip,regdate;
+	private String name,content,pwd,ip,regdate, filename;
+	
+	//파일의 정보를 알아올 수 있는 클래스
+	private MultipartFile photo;
 	
 	public int getIdx() {
 		return idx;
@@ -39,6 +44,18 @@ public class VisitVO {
 	}
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public MultipartFile getPhoto() {
+		return photo;
+	}
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
 	}
 	
 	

@@ -29,6 +29,8 @@
 		<beans:constructor-arg ref="dept_dao"></beans:constructor-arg>
 	</beans:bean> -->
 	
+	<context:annotation-config/>
+	
 	<!-- 컨트롤러 수동생성 -->
 	<beans:bean id="visitController" class="com.korea.visit.VisitController">
 		<beans:property name="visit_dao" ref="visit_daoBean"/>
